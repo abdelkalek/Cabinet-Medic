@@ -99,24 +99,17 @@ public class Patient {
             }else{
                 int index= this.Rechercher(ALP);
                 Scanner scf= new Scanner(System.in);
-
                 System.out.println("/*** Bienvenu dans la modification du patient ***/");
-
                 System.out.println("Nv numero: ");
                 ALP.get(index).setNumero(scf.nextInt());
-
                 System.out.println("Nv nom: ");
                 ALP.get(index).setNom( scf.next());
-
                 System.out.println("Nv prenom: ");
                 ALP.get(index).setPrenom(scf.next());
-
                 System.out.println("Nv addresse: ");
                 ALP.get(index).setAddresse( scf.next());
-
                 System.out.println("Nv etat_civile: ");
                 ALP.get(index).setEtat_civile( scf.next());
-
                 System.out.println("Nv date_naissance: Sous FORMAT XX/XX/XXXX ");
                 try
                 {

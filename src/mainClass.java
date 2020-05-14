@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class mainClass {
-
-
     public static void main(String[] args){
         int choixNiv1 ;
         int choixNiv2;
@@ -51,29 +49,49 @@ public class mainClass {
                             case 2:
                                 System.out.println(" Taper le numero de patient à modifier  ");
                                 int numpatient = sc.nextInt();
-                                ALPatients.get(numpatient).Modifier(ALPatients);
+                                for (Patient P :ALPatients )
+                                {
+                                    if(P.getNumero().equals(numpatient))
+                                    {
+                                        ALPatients.get(ALPatients.indexOf(P)).Modifier(ALPatients);
+                                    }
+                                    else
+                                    {
+                                        System.out.println(" Numero de patient n'existe pas  ");
+                                    }
+                                }
+
                                 break;
                             case 3:
                                 System.out.println(" Taper le numero de patient à Supprimer  ");
                                 int numpatientSupp = sc.nextInt();
-                                ALPatients.get(numpatientSupp).Supprimer(ALPatients);
+                                for (Patient P :ALPatients )
+                                {
+                                    if(P.getNumero().equals(numpatientSupp))
+                                    {
+                                        ALPatients.get(ALPatients.indexOf(P)).Supprimer(ALPatients);
+
+                                    }
+                                    else
+                                    {
+                                        System.out.println(" Numero de patient n'existe pas  ");
+                                    }
+                                }
+
                                 break;
                             case 4:
                                 /***************mise a jours****************/
                                 if (ALPatients.isEmpty())
                                 {
-                                     System.out.println(" Liste des patients est vide   ");
-
+                                    System.out.println(" Liste des patients est vide   ");
                                 }else{
                                     for (Patient pa : ALPatients)
                                     {
                                         System.out.println(pa+"  ");
-
                                     }
                                     System.out.println("Fin de Liste des patients    ");
                                 }
-
-                          /*******************************/
+                                /*******************************/
                                 break;
                             default:
                                 if (choixNiv2 != 5)
@@ -81,7 +99,7 @@ public class mainClass {
                         }
                     }while( choixNiv2 != 5) ;
 
-                break;
+                    break;
                 case 2 :
                     do{
                         System.out.println("/**   BIENVENUE DANS La GESTION Des Médicaments  **/");
@@ -103,12 +121,34 @@ public class mainClass {
                             case 2:
                                 System.out.println(" Taper le numero de Medicament à modifier  ");
                                 int num = sc.nextInt();
-                                ALMedicaments.get(num).Modifier(ALMedicaments);
+                                for (Medicament m2 :ALMedicaments )
+                                {
+                                    if(m2.getCode_unique().equals(num))
+                                    {
+                                        ALMedicaments.get(ALMedicaments.indexOf(m2)).Modifier(ALMedicaments);
+                                    }
+                                    else
+                                    {
+                                        System.out.println(" Numero de Medicament n'existe pas  ");
+                                    }
+                                }
+
                                 break;
                             case 3:
                                 System.out.println(" Taper le numero de Medicament à Supprimer  ");
                                 int numSupp = sc.nextInt();
-                                ALMedicaments.get(numSupp).Supprimer(ALMedicaments);
+                                for (Medicament m2 :ALMedicaments )
+                                {
+                                    if(m2.getCode_unique().equals(m2))
+                                    {
+                                        ALMedicaments.get(ALMedicaments.indexOf(m2)).Supprimer(ALMedicaments);
+                                    }
+                                    else
+                                    {
+                                        System.out.println(" Numero de Medicament n'existe pas  ");
+                                    }
+                                }
+
                                 break;
                             /***************mise a jours****************/
                             case 4:
@@ -133,14 +173,24 @@ public class mainClass {
                                 try {
                                     if(!ALMedicaments.isEmpty())
                                     {
-                                        ALMedicaments.get(numADD).Approvisionner(ALMedicaments, QTE);
-                                    }else
+                                        for (Medicament m3 :ALMedicaments )
                                         {
-                                            System.out.println("Warning: pas de Medicament ");
+                                            if(m3.getCode_unique().equals(m3))
+                                            {
+                                                ALMedicaments.get(ALMedicaments.indexOf(m3)).Approvisionner(ALMedicaments, QTE);
+                                            }
+                                            else
+                                            {
+                                                System.out.println(" Numero de Medicament n'existe pas  ");
+                                            }
                                         }
+                                    }else
+                                    {
+                                        System.out.println("Warning: pas de Medicament ");
+                                    }
 
                                 } catch(Exception e){
-                                        System.out.println("Warning: pas de Medicament ou il y a un autre probleme  => "+e);
+                                    System.out.println("Warning: pas de Medicament ou il y a un autre probleme  => "+e);
                                 }
 
                                 break;
@@ -151,7 +201,7 @@ public class mainClass {
                         }
                     }while( choixNiv2 != 6) ;
 
-                break;
+                    break;
                 case 3 :
                     do{
                         System.out.println("/**   BIENVENUE DANS La GESTION Des RDVs  **/");
@@ -173,21 +223,21 @@ public class mainClass {
                                 {
                                     System.out.println(" liste de patient est vide  ");
                                 }else
+                                {
+                                    for(Patient p : ALPatients)
                                     {
-                                        for(Patient p : ALPatients)
+                                        if(p.getNumero().equals(nump))
                                         {
-                                            if(p.getNumero().equals(nump))
-                                            {
-                                                m.Prendre(nump);
-                                                m.Ajouter(ALRDVs);
-                                                System.out.println(" RDV  Ajouter Avec succès: ");
-                                            }
-                                            else
-                                            {
-                                                System.out.println("il faut précédemment précisé le patient qui veut prendre un  RDV : ");
-                                            }
+                                            m.Prendre(nump);
+                                            m.Ajouter(ALRDVs);
+                                            System.out.println(" RDV  Ajouter Avec succès: ");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("il faut précédemment précisé le patient qui veut prendre un  RDV : ");
                                         }
                                     }
+                                }
 
                                 break;
                             case 2:
@@ -221,7 +271,7 @@ public class mainClass {
                     }while( choixNiv2 != 5) ;
 
 
-                break;
+                    break;
                 case 4 :
                     do{
                         System.out.println("/**   BIENVENUE DANS La GESTION Des Consultations  **/");
@@ -280,11 +330,11 @@ public class mainClass {
                                                                     m1.setQuantite(m1.getQuantite()-med1.getQuantite());
                                                                     System.out.println("medicaement Ajoutee");
                                                                 } else
-                                                                    { System.out.println("probleme de QTE ou medic n'exist pas  ");
+                                                                { System.out.println("probleme de QTE ou medic n'exist pas  ");
 
-                                                                    }
+                                                                }
                                                             }
-                                                         }
+                                                        }
 
                                                         break;
                                                     case 2:
@@ -301,12 +351,11 @@ public class mainClass {
                                             System.out.println(" Consultation  Ajouter Avec succès: ");
                                         }
                                         else
-                                      {
-                                         System.out.println("il faut précédemment  prendre un  RDV : ");
-                                      }
+                                        {
+                                            System.out.println("il faut précédemment  prendre un  RDV : ");
+                                        }
+                                    }
                                 }
-                            }
-
                                 break;
                             case 2:
                                 System.out.println(" Taper le numero de Consultation à modifier  ");
@@ -338,8 +387,6 @@ public class mainClass {
                                     System.out.println(" Choix invalide  ");
                         }
                     }while( choixNiv2 != 5) ;
-
-
                 default:
                     if (choixNiv1 != 5)
                         System.out.println(" Choix invalide  ");
@@ -411,6 +458,6 @@ public class mainClass {
 //        }
 //        ////////////FIN//////////////
 //
-   }
+    }
 
 }
